@@ -5,7 +5,7 @@ from operations.file_operations import FileOperations
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
-    parser.add_argument('-json_path', '--file', required=True, help='File required')
+    parser.add_argument('-f', '--file', required=True, help='File required')
     parser.add_argument('-db', '--db', required=True, help='Database required')
     args = parser.parse_args()
     

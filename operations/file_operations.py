@@ -1,13 +1,18 @@
 import json
-from regex import RegexOperations as REGEX
 from user import UserClass
+from operations.regex import RegexOperations as REGEX
+
 class FileOperations():
     
     def __init__(self, json_path):
         self.json_path = json_path
     
     def extractFromJson(self):
-        
+        '''
+        Converts data from Json file to list format
+        :param self: 
+        :returns recordList: <list>
+        '''
         recordList = []
         with open(self.json_path) as json_file:
             allJson = json.load(json_file)

@@ -9,13 +9,23 @@ class DBOperations():
         self.db_name = db_name
 
     def connect(self):
+        """
+        Create a database connection to SQLite database
+        :returns: sqlite3.connection 
+        """
         connection = sql.connect(self.db_name)
         return connection
 
     def updateTableName(self):
+        """
+        Updates the data name with the date format
+        """
         return 'data_{}'.format(datetime.now().strftime("%d%m%Y"))
 
     def createTable(self):
+        """
+        Connects to the database and creates a new table
+        """
         try:
             connectionDB = self.connect()
             create_table_query = f'''CREATE TABLE IF NOT EXISTS {self.updateTableName()} (
@@ -43,7 +53,10 @@ class DBOperations():
             print("Sqlite connection is closed")
 
     def insertData(self,recordList):
-       
+        """
+        Adds all data to database
+        :param recordList: <list>
+        """
         try:
             connectionDB = self.connect()
             cursor = connectionDB.cursor()
