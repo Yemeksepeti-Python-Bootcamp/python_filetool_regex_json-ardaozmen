@@ -1,5 +1,4 @@
 import sqlite3 as sql
-from user import UserClass
 from datetime import datetime
 from operations.file_operations import FileOperations
 
@@ -79,3 +78,14 @@ class DBOperations():
             if connectionDB:
                 connectionDB.close()
                 print('The sqlite connection is closed')
+
+    def showTable(self):
+        """
+        Shows the exists database tables
+        """
+        connectionDB = self.connect()
+        cursor = connectionDB.cursor()
+        cursor.execute(f"SELECT name FROM {self.updateTableName()}")
+        data = cursor.fetchall()
+        for row in data:
+            print(row)
